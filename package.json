@@ -1,14 +1,11 @@
 {
-  "name": "icon-test",
+  "name": "image-resize",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "description": "A simple image resizer",
+  "main": "index.js",  
+  "author": "Dan Hahn <danielhahn@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "thumbnail": "^0.1.9"
+    "mkdirp": "^0.5.0"
   }
 }

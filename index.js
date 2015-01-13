@@ -1,24 +1,35 @@
 var fs = require('fs');
 var gm = require('gm');
-var $ = require('jquery');
+var mkdirp = require('mkdirp');
 
+var path = 'images/';
+var size = {width: 200, height: 200};
 
-
-fs.readdir( 'images/', function (err, files) { 
+fs.readdir( path, function (err, files) { 
 	if (!err) {
+
+		if (!fs.existsSync(path + 'lg/')) {
+		    // Do something
+			mkdirp('images/lg', function (err) {
+			    if (err) console.error(err)
+			    else console.log('pow! lg')
+			});
+		}
+
+		if (!fs.existsSync(path + 'sm/')) {
+		    // Do something
+			mkdirp('images/sm', function (err) {
+			    if (err) console.error(err)
+			    else console.log('pow! sm')
+			});
+		}
+
+		
 		for(var i=0; i < files.length; i++) {
 			var file = files[i];
 			if(file.indexOf('.jpg') != -1) {
-				console.log(file);
-				// gm('images/' + file)
-				// .thumb(240, 240, 'images/sm/' + file, 10, function() {
-				// 	console.log('done')
-				// })
-				// .write('images/sm/' + file, function (err) {
-				//   if (!err) console.log('done Small');
-				// });
-
-				var size = {width: 200, height: 200};
+				console.log(file);				
+				
 				gm('images/' + file)
 				.resize(size.width, size.height + "^>")
 				.gravity('Center')
@@ -42,16 +53,3 @@ fs.readdir( 'images/', function (err, files) {
 		
 });
 console.log("Fired callback.");
-
-
-// gm('images/ing.jpg')
-// .resize(240, 240)
-// .write('images/sm/ing.jpg', function (err) {
-//   if (!err) console.log('done Small');
-// });
-
-// gm('images/ing.jpg')
-// .resize(1000, 1000)
-// .write('images/lg/ing.jpg', function (err) {
-//   if (!err) console.log('done Large');
-// });

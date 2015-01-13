@@ -13,7 +13,7 @@ Run
 
 Make Dirs
 	
-	$ mkdir images && mkdir images/sm && mkdir images/lg
+	$ mkdir images 
 
 place photos in `images` folder
 
